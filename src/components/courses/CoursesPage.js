@@ -11,7 +11,15 @@ class CoursesPage extends React.Component {
   render() {
     return (
       <form>
-        
+        <h2>Courses</h2>
+        <h3>Add Courses</h3>
+        <input type="text" 
+          onChange={this.handleChange}
+          key={this.state.course.title}
+        />
+        <input type="submit" 
+         value="Save"
+        />
       </form>
     );
   }
