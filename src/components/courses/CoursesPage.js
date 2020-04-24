@@ -9,7 +9,11 @@ class CoursesPage extends React.Component {
     }
   }
   render() {
-    return <h2>Courses</h2>;
+    return (
+      <form>
+        
+      </form>
+    );
   }
 }
 
