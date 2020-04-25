@@ -1,4 +1,6 @@
-import React from 'react';
+import { combineReducers } from 'redux';
+import courses from './courseReducers';
+
 
 const combineReducers = () => {
 return(
