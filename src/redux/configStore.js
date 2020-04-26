@@ -1,7 +1,12 @@
-import { createStore } from 'redux';
-import rootReducer from './reducers';
-import { configure } from 'enzyme';
+import { createStore, applyMiddleware, compose } from "redux";
+import rootReducer from "./reducers";
+import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
 
-export default configureStore(initialState) {
-    return
+
+export default function configureStore(initialState){
+   const composeEnhancer = window.__REDUX_DEVTOOL_EXTENSION_COMPOSE__ || compose;
+    return createStore(
+        rootReducer,
+        initialState, 
+        composeEnhancer(applyMiddleware(reduxImmutableStateInvariant())));
 }
