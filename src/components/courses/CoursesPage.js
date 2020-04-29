@@ -9,20 +9,20 @@ import { Redirect } from "react-router-dom";
 
 class CoursesPage extends React.Component {
   state = {
-    redirectToAddCoursePage: false,
+    redirectToAddCoursePage: false
   };
 
   componentDidMount() {
     const { courses, authors, actions } = this.props;
 
     if (courses.length === 0) {
-      actions.loadCourses().catch((error) => {
+      actions.loadCourses().catch(error => {
         alert("Loading courses failed" + error);
       });
     }
 
     if (authors.length === 0) {
-      actions.loadAuthors().catch((error) => {
+      actions.loadAuthors().catch(error => {
         alert("Loading authors failed" + error);
       });
     }
@@ -51,7 +51,7 @@ class CoursesPage extends React.Component {
 CoursesPage.propTypes = {
   authors: PropTypes.array.isRequired,
   courses: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
@@ -59,14 +59,13 @@ function mapStateToProps(state) {
     courses:
       state.authors.length === 0
         ? []
-        : state.courses.map((course) => {
+        : state.courses.map(course => {
             return {
               ...course,
-              authorName: state.authors.find((a) => a.id === course.authorId)
-                .name,
+              authorName: state.authors.find(a => a.id === course.authorId).name
             };
           }),
-    authors: state.authors,
+    authors: state.authors
   };
 }
 
@@ -74,9 +73,12 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       loadCourses: bindActionCreators(courseActions.loadCourses, dispatch),
-      loadAuthors: bindActionCreators(authorActions.loadAuthors, dispatch),
-    },
+      loadAuthors: bindActionCreators(authorActions.loadAuthors, dispatch)
+    }
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CoursesPage);

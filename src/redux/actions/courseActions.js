@@ -1,9 +1,4 @@
 import * as types from "./actionTypes";
-
-export function createCourse(course) {
-  return { type: types.CREATE_COURSE, course };
-}
-import * as types from "./actionTypes";
 import * as courseApi from "../../api/courseApi";
 
 export function loadCourseSuccess(courses) {
@@ -19,13 +14,13 @@ export function updateCourseSuccess(course) {
 }
 
 export function loadCourses() {
-  return function (dispatch) {
+  return function(dispatch) {
     return courseApi
       .getCourses()
-      .then((courses) => {
+      .then(courses => {
         dispatch(loadCourseSuccess(courses));
       })
-      .catch((error) => {
+      .catch(error => {
         throw error;
       });
   };
@@ -33,15 +28,15 @@ export function loadCourses() {
 
 export function saveCourse(course) {
   //eslint-disable-next-line no-unused-vars
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     return courseApi
       .saveCourse(course)
-      .then((savedCourse) => {
+      .then(savedCourse => {
         course.id
           ? dispatch(updateCourseSuccess(savedCourse))
           : dispatch(createCourseSuccess(savedCourse));
       })
-      .catch((error) => {
+      .catch(error => {
         throw error;
       });
   };
