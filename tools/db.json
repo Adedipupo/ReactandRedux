@@ -69,6 +69,14 @@
       "slug": "web-components-shadow-dom",
       "authorId": 1,
       "category": "HTML5"
+    },
+    {
+      "id": 11,
+      "title": "Otunba",
+      "authorId": 2,
+      "category": "tech",
+      "createdAt": 1588168751772,
+      "slug": "otunba"
     }
   ],
   "authors": [
